@@ -1,4 +1,5 @@
-# Paradiddles System ![Drums](http://i.imgur.com/rpHYdKS.jpg)
+# Paradiddles System
+![Drums](http://i.imgur.com/rpHYdKS.jpg)
 
 
 API reference is available at http://jazz-soft.net/doc/Jazz-Plugin/reference.html
@@ -13,9 +14,7 @@ Questions and comments are welcome at http://jazz-soft.org/
 
 and point your browser to **localhost:2311**
 
-**[Demo]** 
-[Demo]: http://drumset.herokuapp.com/
-
+[Demo](http://drumset.herokuapp.com/)
 
 ## app.js
 
@@ -45,6 +44,5 @@ io.sockets.on('connection', function(socket) {
   });
 });
 
-var port = Number(process.env.PORT || 2311);
-server.listen(port); 
+server.listen(2311); 
 ```
