@@ -252,6 +252,10 @@ function myController($scope, $timeout, socket) {
     $scope.interval = 60000 / $scope._tempo * 0.25;
   };
   
+  $scope.changePitch = function() {
+  	 socket.emit('pitch', $scope._pitch);
+  };
+  
   $scope.changemidi = function() {
     socket.emit('selectmidi', $scope._out);
     $('select').blur();
@@ -321,6 +325,7 @@ function myController($scope, $timeout, socket) {
   $scope.count = 1;
   $scope.beats = 8;
   $scope._tempo = 125;
+  $scope._pitch = 64;
   $scope.Lpattern = "01001011";
   $scope.Rpattern = "10110100";
   $scope.set = [];

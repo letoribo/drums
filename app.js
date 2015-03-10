@@ -27,6 +27,10 @@ io.sockets.on('connection', function(socket) {
     Jazz.MidiOut(0x99,data,119);
   });
   
+  socket.on('pitch', function(data) {
+    Jazz.MidiOut(0xe9, 0, data); 
+  });
+  
   socket.on('createNote', function(data) {
     socket.broadcast.emit('onNoteCreated', data);
   });

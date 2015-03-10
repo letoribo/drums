@@ -131,7 +131,8 @@ i.R {border:1px solid green;}
 </center>
 
 <div>
- <label>Tempo: </label><input type="number" min="0" value = 125 ng-change='changetempo();' ng-click="blur();" ng-model="_tempo"/>
+ <label>Tempo: </label><input type="number" min="0" max="400" ng-change='changetempo();' ng-click="blur();" ng-model="_tempo"/>
+ <label>Pitch: </label><input type="number" min="0" max="127" ng-change='changePitch();' ng-click="blur();" ng-model="_pitch"/> 
  <button ng-click='shuffle();' ng-jquery-plugin="{button : { label: 'R.N.'}}" ng-init="shuffle()"></button>
  <button ng-click='random();' ng-disabled="state" ng-jquery-plugin="{button : { label: 'Randomize',disabled:false}}"></button>
 </div>
