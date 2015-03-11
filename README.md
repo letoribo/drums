@@ -1,5 +1,5 @@
 # Paradiddles System
-![Drums](http://i.imgur.com/rpHYdKS.jpg)
+![Drums](http://i.imgur.com/uHpmNuJ.jpg)
 
 
 API reference is available at http://jazz-soft.net/doc/Jazz-Plugin/reference.html
