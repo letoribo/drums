@@ -30,28 +30,33 @@ function myController($scope, $timeout, socket) {
     $scope.list = data;
   }) 
  
-  socket.on('onNoteCreated', function(data) {
+  socket.on('onNoteCreated', function(data) { console.log(data);
 	 if (data.set === 'L') {
 	  	$scope.side = data.set;
-		$scope.set.push(data.id); console.log(data);
+		$scope.set.push(data.id);
 		console.log($scope.set + ';' + _.size($scope.set));
 	 }
 	 if (data.set === 'R') {
 	  	$scope.side = data.set;
-		$scope.Set.push(data.id); console.log(data);
+		$scope.Set.push(data.id);
 		console.log($scope.Set + ';' + _.size($scope.Set));
 	 }	  
   });
 	
-  socket.on('onPatternChanged', function(data) {
-	 if (data.set === 'L') {
-		$scope.Lpattern = data.id; console.log(data);
-		console.log($scope.Lpattern);
-	 }
-	 if (data.set === 'R') {
-		$scope.Rpattern = data.id; console.log(data);
-		console.log($scope.Rpattern);
-	 }	  
+  socket.on('onPatternChanged', function(data) { console.log(data);
+	 if (data.invert == true) {
+	   if (data.side === 'L') {
+	  	  $scope.Folder = 'L'; $scope.Rpattern = data.id; $scope.Invert = true;
+	  	}else {
+	  	  $scope.folder = 'R'; $scope.Lpattern = data.id; $scope.invert = true;
+	  	}  	 
+	 }else {
+	   if (data.side === 'L') {
+	     $scope.folder = 'L'; $scope.Lpattern = data.id; $scope.invert = false;
+	   }else {	
+	     $scope.Folder = 'R'; $scope.Rpattern = data.id; $scope.Invert = false;
+	   }
+    }	 
   });
 	
   socket.on('onBeatChanged', function(data) {
@@ -97,9 +102,10 @@ function myController($scope, $timeout, socket) {
 	 socket.emit('createNote', note_id);
   };
 
-  $scope.changepattern = function(set, pattern) {
+  $scope.changepattern = function(side, invert, pattern) {
 	 var pattern_id = {
-		set: set,
+		side: side,
+		invert: invert,
 		id: pattern,			
 	 };
 	 socket.emit('changePattern', pattern_id);
@@ -336,15 +342,32 @@ function myController($scope, $timeout, socket) {
   $scope.Sound = "Open Hi-Hat";
     
   $scope.changeRpattern = function(p) {
-    $scope.Rpattern = p;
-    console.log($scope.Rpattern);
-    $scope.changepattern('R', p);
-  }
-  $scope.changeLpattern = function(p) {
-    $scope.Lpattern = p;
-    console.log($scope.Lpattern);
-    $scope.changepattern('L', p);
-  }
+    if ($scope.Invert) { 
+      $scope.Folder = 'L';
+  	   var z = '';
+  	   _.map(p, function(b){ z += (b === '1' ? '0' : '1'); })
+  	   $scope.Rpattern = z;
+  	   $scope.changepattern('L', true, $scope.Rpattern);
+  	 }else{ 
+  	   $scope.Folder = 'R';
+      $scope.Rpattern = p;
+      $scope.changepattern('R', false, $scope.Rpattern);
+    }   
+  };
+  
+  $scope.changeLpattern = function(p) {      	
+  	 if ($scope.invert) { 
+  	   $scope.folder = 'R';
+  	   var z = ''; 	  
+  	   _.map(p, function(b){ z+=(b === '1' ? '0' : '1'); })
+  	   $scope.Lpattern = z;
+  	   $scope.changepattern('R', true, $scope.Lpattern);
+    }else{   	 
+      $scope.folder = 'L';
+      $scope.Lpattern = p;
+      $scope.changepattern('L', false, $scope.Lpattern);
+    }
+  };
   
   $scope.blur = function() { $("input").blur(); }
 };

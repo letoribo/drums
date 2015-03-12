@@ -59,6 +59,7 @@ i.R {border:1px solid green;}
 .set.down, .set.Down {background: grey;}
 .set.up, .set.Up {background:#fee;}
 .finale {margin-top:18px;height: 50px; width: 336px;background-position: center;}
+#invert, #Invert {float:right}
 </style>
 </head>
 
@@ -77,6 +78,7 @@ i.R {border:1px solid green;}
 <ul>
  <li ng-repeat="i in R8" ng-mousedown="changeRpattern(i);" ng-class="{ 'selected': i == Rpattern }"><strong>{{i}}</strong></li>         
 </ul>
+<input type="checkbox" id="Invert" style="cursor: pointer;" ng-model="Invert"/>
 </div>
 <div class="PS">
 <ul>
@@ -119,6 +121,7 @@ i.R {border:1px solid green;}
 <ul>
  <li ng-repeat="i in L8" ng-mousedown="changeLpattern(i);" ng-class="{ 'selected': i == Lpattern }"><strong>{{i}}</strong></li>         
 </ul>
+<input type="checkbox" id="invert" style="cursor: pointer;" ng-model="invert"/>
 </div>
 
 <div style="float:right;">
@@ -142,8 +145,8 @@ i.R {border:1px solid green;}
  <div title="beats" ng-jquery-plugin="{ slider : { min: 1, max: 16, value: 8, stop : onStop }, width: W }"></div>
 </div> 
 <div> 
-<img id = "header" class="finale" style="float:right" ng-model="Rpattern" ng-style="{'background-image':'url(R/' + Rpattern + '.jpg )'}">
-<img id = "header" class="finale" ng-model="Lpattern" ng-style="{'background-image':'url(L/' + Lpattern + '.jpg )'}"> 
+<img id = "header" class="finale" style="float:right" ng-init="Folder='R'" ng-model="Rpattern" ng-style="{'background-image':'url(' + Folder + '/' + Rpattern + '.jpg )'}">
+<img id = "header" class="finale" ng-model="Lpattern" ng-init="folder='L'" ng-style="{'background-image':'url(' + folder + '/' + Lpattern + '.jpg )'}">
 </div> 
 <div ng-click="side = 'R';" id="drumsetR">
 <div ng-model="Set" class="drum" ng-repeat="i in Set track by $index">
