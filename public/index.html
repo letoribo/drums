@@ -13,8 +13,8 @@
 <script src="/js/drumset.js"></script>
 <style type="text/css">
 body {color: #001326; background: #F4F4F4; font-family: monospace;}
-.PS {height: auto; width: 11%; float: right; cursor: pointer;}
-#right {margin-right:3%;}
+.PS {height: auto; float: right; cursor: pointer;}   /*width: 10%;*/
+#right {margin-right:1%;}
 #play {cursor: url(images/Drumsticks.cur),auto;}
 .first {color: red;}
 .btn-large {padding: 8px 15px; font-size: 17.5px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; cursor: pointer;}
@@ -29,7 +29,7 @@ span {line-height: 270%;}
 .Center {
   width: 86%; height: 28%; margin: auto; margin-top: 25px; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background-color: inherit;
 }
-li { border:2px solid white; width: 8%; display: table; letter-spacing:10px; font-size: 1.1em; text-align: center;}
+li { border:2px solid white; display: table; letter-spacing:5px; text-align: center; padding-top:3px;}
 li:hover { border:2px dotted grey;}
 i:hover { border:1px dotted grey;}
 i { border:1px solid white; width: 8%; display: table; color: rgb(111, 59, 139);font-size: 0.9em;text-align:center;white-space:nowrap;
@@ -59,11 +59,12 @@ i.R {border:1px solid green;}
 .set.down, .set.Down {background: grey;}
 .set.up, .set.Up {background:#fee;}
 .finale {margin-top:18px;height: 50px; width: 336px;background-position: center;}
-#invert, #Invert {float:right}
+#invert {float:right;} #Invert {float:left;}
 </style>
 </head>
 
 <body ng-controller="myController" ng-init="onReady()">
+<div style="float:right;width:40%">
 
 <div id="right" class="PS">
 <ul>
@@ -76,9 +77,9 @@ i.R {border:1px solid green;}
  <li ng-repeat="i in R7" ng-mousedown="changeRpattern(i);" ng-class="{ 'selected': i == Rpattern }"><strong>{{i}}</strong></li>         
 </ul>
 <ul>
- <li ng-repeat="i in R8" ng-mousedown="changeRpattern(i);" ng-class="{ 'selected': i == Rpattern }"><strong>{{i}}</strong></li>         
+ <li ng-repeat="i in R8" ng-mousedown="changeRpattern(i);" ng-class="{ 'selected': i == Rpattern }"><strong>{{i}}</strong></li>
+ <br><input type="checkbox" id="Invert" style="cursor: pointer;" ng-model="Invert"/>         
 </ul>
-<input type="checkbox" id="Invert" style="cursor: pointer;" ng-model="Invert"/>
 </div>
 <div class="PS">
 <ul>
@@ -119,9 +120,10 @@ i.R {border:1px solid green;}
  <li ng-repeat="i in L7" ng-mousedown="changeLpattern(i);" ng-class="{ 'selected': i == Lpattern }"><strong>{{i}}</strong></li>         
 </ul>
 <ul>
- <li ng-repeat="i in L8" ng-mousedown="changeLpattern(i);" ng-class="{ 'selected': i == Lpattern }"><strong>{{i}}</strong></li>         
+ <li ng-repeat="i in L8" ng-mousedown="changeLpattern(i);" ng-class="{ 'selected': i == Lpattern }"><strong>{{i}}</strong></li>
+ <br><input type="checkbox" id="invert" style="cursor: pointer;" ng-model="invert"/>         
 </ul>
-<input type="checkbox" id="invert" style="cursor: pointer;" ng-model="invert"/>
+</div>
 </div>
 
 <div style="float:right;">
@@ -141,12 +143,12 @@ i.R {border:1px solid green;}
  <button ng-click='random();' ng-disabled="state" ng-jquery-plugin="{button : { label: 'Randomize',disabled:false}}"></button>
 </div>
 <pre>   beats: <input type="text" ng-click="blur();" ng-model="beats">count: <input type="text" size="4" ng-model="count" ng-click="blur();" value="1" ng-class="{ 'first': count == 0 }"></pre>
-<div>
- <div title="beats" ng-jquery-plugin="{ slider : { min: 1, max: 16, value: 8, stop : onStop }, width: W }"></div>
+<div><center>
+ <div title="beats" ng-jquery-plugin="{ slider : { min: 1, max: 16, value: 8, stop : onStop }, width: W }"></div></center>
 </div> 
 <div> 
 <img id = "header" class="finale" style="float:right" ng-init="Folder='R'" ng-model="Rpattern" ng-style="{'background-image':'url(' + Folder + '/' + Rpattern + '.jpg )'}">
-<img id = "header" class="finale" ng-model="Lpattern" ng-init="folder='L'" ng-style="{'background-image':'url(' + folder + '/' + Lpattern + '.jpg )'}">
+<img id = "header" class="finale" style="float:left" ng-model="Lpattern" ng-init="folder='L'" ng-style="{'background-image':'url(' + folder + '/' + Lpattern + '.jpg )'}">
 </div> 
 <div ng-click="side = 'R';" id="drumsetR">
 <div ng-model="Set" class="drum" ng-repeat="i in Set track by $index">
