@@ -13,7 +13,7 @@
 <script src="/js/drumset.js"></script>
 <style type="text/css">
 body {color: #001326; background: #F4F4F4; font-family: monospace;}
-.PS {height: auto; float: right; cursor: pointer;}   /*width: 10%;*/
+.PS {height: auto; float: right; cursor: pointer;}
 #right {margin-right:1%;}
 #play {cursor: url(images/Drumsticks.cur),auto;}
 .first {color: red;}
@@ -140,6 +140,7 @@ i.R {border:1px solid green;}
  <label>Tempo: </label><input type="number" min="0" max="400" ng-change='changetempo();' ng-click="blur();" ng-model="_tempo"/>
  <label>Pitch: </label><input type="number" min="0" max="127" ng-change='changePitch();' ng-click="blur();" ng-model="_pitch"/> 
  <button ng-click='shuffle();' ng-jquery-plugin="{button : { label: 'R.N.'}}" ng-init="shuffle()"></button>
+ <button ng-click='changePatterns();' ng-jquery-plugin="{button : { label: 'R.P.'}}"></button>
  <button ng-click='random();' ng-disabled="state" ng-jquery-plugin="{button : { label: 'Randomize',disabled:false}}"></button>
 </div>
 <pre>   beats: <input type="text" ng-click="blur();" ng-model="beats">count: <input type="text" size="4" ng-model="count" ng-click="blur();" value="1" ng-class="{ 'first': count == 0 }"></pre>

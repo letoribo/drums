@@ -245,13 +245,15 @@ function myController($scope, $timeout, socket) {
   };
     
   $scope.visual = function (){
-    $scope.snd = _.random(0, _.size($scope.set));
+  	 var m = _.size($scope.set) - 1;
+    $scope.snd = _.random(m);
     $scope.note = $scope.set[$scope.snd];
   };
        
-  $scope.Visual = function (){ 
-    $scope.Snd = _.random(0, _.size($scope.Set));
-    $scope.Note = $scope.Set[$scope.Snd];
+  $scope.Visual = function (){
+  	 var m = _.size($scope.Set) - 1; 
+    $scope.Snd = _.random(m);
+    $scope.Note = $scope.Set[$scope.Snd]; 
   };
         
   $scope.changetempo = function() {
@@ -323,7 +325,10 @@ function myController($scope, $timeout, socket) {
   $scope.L6 = [{p: "00110101", bg: "#66FFFF"}, {p: "00100101", bg: "#FFCCFF"}, {p: "00101101", bg: "#CCFF99"}, {p: "00101001", bg: "#FFCCFF"}];
   $scope.L7 = ["00100100", "00101100", "00110100"];
   $scope.L8 = ["00100110", "00110110", "00101010", "00110010"]; 
-
+  
+  $scope.R = ["10101010", "10100110", "10011010", "10110110", "10010010", "10010110", "10110010", "10101100", "10100100", "10110100", "10010100", "10100101", "10101101", "10110101", "10010101", "10101001", "10011001", "10011011", "10010011", "10101011", "10110011", "11001100", "11010100", "11001010", "11011010", "11010010", "11010110", "11011011", "11010011", "11001011", "11011001", "11001001", "11010101", "11001101"];
+  $scope.L = ["01010101", "01011001", "01100101", "01001001", "01101101", "01101001", "01001101", "01010011", "01011011", "01001011", "01101011", "01011010", "01010010", "01001010", "01101010", "01010110", "01100110", "01100100", "01101100", "01010100", "01001100", "00110011", "00101011", "00110101", "00100101", "00101101", "00101001", "00100100", "00101100", "00110100", "00100110", "00110110", "00101010", "00110010"];
+  
   $scope.interval = 120;
   $scope.W = window.innerWidth * 0.36;
   $scope.state = true;
@@ -369,5 +374,10 @@ function myController($scope, $timeout, socket) {
     }
   };
   
+  $scope.changePatterns = function() {
+  	 var l = $scope.L[_.random(33)]; $scope.changeLpattern(l);
+  	 var r = $scope.R[_.random(33)]; $scope.changeRpattern(r);
+  };
+  	
   $scope.blur = function() { $("input").blur(); }
 };
