@@ -68,59 +68,59 @@ i.R {border:1px solid green;}
 
 <div id="right" class="PS">
 <ul>
- <li ng-repeat="i in R5" ng-mousedown="changeRpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Rpattern }"><strong>{{i.p}}</strong></li>         
+ <li ng-repeat="i in R5" ng-mousedown="changeRpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Rp }"><strong>{{i.p}}</strong></li>         
 </ul>
 <ul>
- <li ng-repeat="i in R6" ng-mousedown="changeRpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Rpattern }"><strong>{{i.p}}</strong></li>         
+ <li ng-repeat="i in R6" ng-mousedown="changeRpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Rp }"><strong>{{i.p}}</strong></li>         
 </ul>
 <ul>
- <li ng-repeat="i in R7" ng-mousedown="changeRpattern(i);" ng-class="{ 'selected': i == Rpattern }"><strong>{{i}}</strong></li>         
+ <li ng-repeat="i in R7" ng-mousedown="changeRpattern(i);" ng-class="{ 'selected': i == Rp }"><strong>{{i}}</strong></li>         
 </ul>
 <ul>
- <li ng-repeat="i in R8" ng-mousedown="changeRpattern(i);" ng-class="{ 'selected': i == Rpattern }"><strong>{{i}}</strong></li>
+ <li ng-repeat="i in R8" ng-mousedown="changeRpattern(i);" ng-class="{ 'selected': i == Rp }"><strong>{{i}}</strong></li>
  <br><input type="checkbox" id="Invert" style="cursor: pointer;" ng-model="Invert"/>         
 </ul>
 </div>
 <div class="PS">
 <ul>
- <li ng-repeat="i in R1" ng-mousedown="changeRpattern(i.p);" ng-class="{ 'selected': i.p == Rpattern }" style="background:{{i.bg}}"><strong>{{i.p}}</strong></li>
+ <li ng-repeat="i in R1" ng-mousedown="changeRpattern(i.p);" ng-class="{ 'selected': i.p == Rp }" style="background:{{i.bg}}"><strong>{{i.p}}</strong></li>
 </ul>
 <ul>
- <li ng-repeat="i in R2" ng-mousedown="changeRpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Rpattern }"><strong>{{i.p}}</strong></li>         
+ <li ng-repeat="i in R2" ng-mousedown="changeRpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Rp }"><strong>{{i.p}}</strong></li>         
 </ul>
 <ul>
- <li ng-repeat="i in R3" ng-mousedown="changeRpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Rpattern }"><strong>{{i.p}}</strong></li>      
+ <li ng-repeat="i in R3" ng-mousedown="changeRpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Rp }"><strong>{{i.p}}</strong></li>      
 </ul>
 <ul>
- <li ng-repeat="i in R4" ng-mousedown="changeRpattern(i);" ng-class="{ 'selected': i == Rpattern }"><strong>{{i}}</strong></li>         
-</ul>
-</div>
-<div class="PS">
-<ul>
- <li ng-repeat="i in L1" ng-mousedown="changeLpattern(i.p);" ng-class="{ 'selected': i.p == Lpattern }" style="background:{{i.bg}}"><strong>{{i.p}}</strong></li>
-</ul>
-<ul>
- <li ng-repeat="i in L2" ng-mousedown="changeLpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Lpattern }"><strong>{{i.p}}</strong></li>       
-</ul>
-<ul>
- <li ng-repeat="i in L3" ng-mousedown="changeLpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Lpattern }"><strong>{{i.p}}</strong></li>
-</ul>
-<ul>
- <li ng-repeat="i in L4" ng-mousedown="changeLpattern(i);" ng-class="{ 'selected': i == Lpattern }"><strong>{{i}}</strong></li>         
+ <li ng-repeat="i in R4" ng-mousedown="changeRpattern(i);" ng-class="{ 'selected': i == Rp }"><strong>{{i}}</strong></li>         
 </ul>
 </div>
 <div class="PS">
 <ul>
- <li ng-repeat="i in L5" ng-mousedown="changeLpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Lpattern }"><strong>{{i.p}}</strong></li>         
+ <li ng-repeat="i in L1" ng-mousedown="changeLpattern(i.p);" ng-class="{ 'selected': i.p == Lp}" style="background:{{i.bg}}"><strong>{{i.p}}</strong></li>
 </ul>
 <ul>
- <li ng-repeat="i in L6" ng-mousedown="changeLpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Lpattern }"><strong>{{i.p}}</strong></li>         
+ <li ng-repeat="i in L2" ng-mousedown="changeLpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Lp }"><strong>{{i.p}}</strong></li>       
 </ul>
 <ul>
- <li ng-repeat="i in L7" ng-mousedown="changeLpattern(i);" ng-class="{ 'selected': i == Lpattern }"><strong>{{i}}</strong></li>         
+ <li ng-repeat="i in L3" ng-mousedown="changeLpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Lp }"><strong>{{i.p}}</strong></li>
 </ul>
 <ul>
- <li ng-repeat="i in L8" ng-mousedown="changeLpattern(i);" ng-class="{ 'selected': i == Lpattern }"><strong>{{i}}</strong></li>
+ <li ng-repeat="i in L4" ng-mousedown="changeLpattern(i);" ng-class="{ 'selected': i == Lp }"><strong>{{i}}</strong></li>         
+</ul>
+</div>
+<div class="PS">
+<ul>
+ <li ng-repeat="i in L5" ng-mousedown="changeLpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Lp }"><strong>{{i.p}}</strong></li>         
+</ul>
+<ul>
+ <li ng-repeat="i in L6" ng-mousedown="changeLpattern(i.p);" style="background:{{i.bg}}" ng-class="{ 'selected': i.p == Lp }"><strong>{{i.p}}</strong></li>         
+</ul>
+<ul>
+ <li ng-repeat="i in L7" ng-mousedown="changeLpattern(i);" ng-class="{ 'selected': i == Lp }"><strong>{{i}}</strong></li>         
+</ul>
+<ul>
+ <li ng-repeat="i in L8" ng-mousedown="changeLpattern(i);" ng-class="{ 'selected': i == Lp }"><strong>{{i}}</strong></li>
  <br><input type="checkbox" id="invert" style="cursor: pointer;" ng-model="invert"/>         
 </ul>
 </div>

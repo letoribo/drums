@@ -45,15 +45,15 @@ function myController($scope, $timeout, socket) {
 	
   socket.on('onPatternChanged', function(data) { console.log(data);
 	 if (data.invert == true) {
-	   if (data.side === 'L') {
+	   if (data.side === 'L') { $scope.Rp = data.p;
 	  	  $scope.Folder = 'L'; $scope.Rpattern = data.id; $scope.Invert = true;
-	  	}else {
+	  	}else { $scope.Lp = data.p;
 	  	  $scope.folder = 'R'; $scope.Lpattern = data.id; $scope.invert = true;
 	  	}  	 
 	 }else {
-	   if (data.side === 'L') {
+	   if (data.side === 'L') { $scope.Lp = data.id;
 	     $scope.folder = 'L'; $scope.Lpattern = data.id; $scope.invert = false;
-	   }else {	
+	   }else { $scope.Rp = data.id;	
 	     $scope.Folder = 'R'; $scope.Rpattern = data.id; $scope.Invert = false;
 	   }
     }	 
@@ -102,11 +102,12 @@ function myController($scope, $timeout, socket) {
 	 socket.emit('createNote', note_id);
   };
 
-  $scope.changepattern = function(side, invert, pattern) {
+  $scope.changepattern = function(side, invert, pattern, P) {
 	 var pattern_id = {
 		side: side,
 		invert: invert,
-		id: pattern,			
+		id: pattern,
+		p: P			
 	 };
 	 socket.emit('changePattern', pattern_id);
   };
@@ -346,13 +347,13 @@ function myController($scope, $timeout, socket) {
   $scope.sound = "Closed Hi Hat";
   $scope.Sound = "Open Hi-Hat";
     
-  $scope.changeRpattern = function(p) {
+  $scope.changeRpattern = function(p) { $scope.Rp = p;
     if ($scope.Invert) { 
       $scope.Folder = 'L';
   	   $scope.Rpattern = p.replace(/./g,function(b){
         return b=='0'?'1':'0';
       });
-  	   $scope.changepattern('L', true, $scope.Rpattern);
+  	   $scope.changepattern('L', true, $scope.Rpattern, p);
   	 }else{ 
   	   $scope.Folder = 'R';
       $scope.Rpattern = p;
@@ -360,13 +361,13 @@ function myController($scope, $timeout, socket) {
     }   
   };
   
-  $scope.changeLpattern = function(p) {      	
+  $scope.changeLpattern = function(p) { $scope.Lp = p;     	
   	 if ($scope.invert) { 
   	   $scope.folder = 'R';
   	   $scope.Lpattern = p.replace(/./g,function(b){
         return b=='0'?'1':'0';
       });
-  	   $scope.changepattern('R', true, $scope.Lpattern);
+  	   $scope.changepattern('R', true, $scope.Lpattern, p);
     }else{   	 
       $scope.folder = 'L';
       $scope.Lpattern = p;
