@@ -14,7 +14,6 @@ Questions and comments are welcome at http://jazz-soft.org/
 
 and point your browser to **localhost:2311**
 
-[Demo](http://drumset.herokuapp.com/)
 
 ## app.js
 
@@ -23,10 +22,11 @@ var jazz = require('jazz-midi'),
 Jazz = new jazz.MIDI(),
 express = require('express'),
 app = express(),
+path = require('path'),
 server = require('http').createServer(app),
 io = require('socket.io').listen(server);
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 io.sockets.on('connection', function(socket) {
   socket.on('ready', function(){

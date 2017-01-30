@@ -1,14 +1,14 @@
 {
   "name": "drums",
   "description": "AngularJS Drums",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/letoribo/drums.git"
   },
   "keywords": [
     "midi",
-    "sound",    
+    "sound",
     "drums",
     "percussion",
     "paradiddles",
@@ -16,9 +16,9 @@
     "AngularJS"
   ],
   "dependencies": {
-    "express": "3.x",
-    "socket.io": "0.9.x",
-    "jazz-midi": "^1.4.4"
+    "express": "^4.14.1",
+    "jazz-midi": "^1.5.3",
+    "socket.io": "^1.7.2"
   },
   "scripts": {
     "start": "node app.js"
